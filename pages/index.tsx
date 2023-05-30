@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
 
-const API_KEY = "17651becde5d44d95b2e79d913200f5d"; // 무료이기 때문에 공개, 실제로는 API가 공개되면 안됨.
-
 export default function Home() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const { results } = await (
-        await fetch(
-          `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}`
-        )
-      ).json();
+      const { results } = await (await fetch("/api/movies")).json();
       setMovies(results);
     })();
   }, []);
-  console.log("📢 [index.tsx:17]", movies);
 
   return (
     <div className="container">

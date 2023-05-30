@@ -4,13 +4,15 @@ type RoutePathPros = {
   [key: string]: string;
 };
 
-const page: RoutePathPros = {
-  "/": "Home",
-  "/about": "About"
-};
-
 export default function RoutePath() {
   const router = useRouter();
+
+  const page: RoutePathPros = {
+    "/": "Home",
+    "/about": "About",
+    "/movies/[id]": `${router.query.title}`
+  };
+
   const selectRoute = page[router.pathname];
 
   return selectRoute;

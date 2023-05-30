@@ -6,11 +6,13 @@ type RoutePathPros = {
 
 export default function RoutePath() {
   const router = useRouter();
+  const movieTitle =
+    (router.query.params && router.query.params[0]) || "not movie title";
 
   const page: RoutePathPros = {
     "/": "Home",
     "/about": "About",
-    "/movies/[id]": `${router.query.title}`
+    "/movies/[...params]": `${movieTitle}`
   };
 
   const selectRoute = page[router.pathname];

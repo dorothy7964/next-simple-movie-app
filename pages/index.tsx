@@ -8,15 +8,7 @@ export default function Home({
 }: InferGetServerSidePropsType<GetServerSideProps>) {
   const router = useRouter();
   const onClick = (id: string, title: string) => {
-    router.push(
-      {
-        pathname: `/movies/${id}`,
-        query: {
-          title
-        }
-      },
-      `/movies/${id}`
-    );
+    router.push(`/movies/${title}/${id}`);
   };
 
   return (
@@ -29,15 +21,7 @@ export default function Home({
         >
           <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} />
           <h4>
-            <Link
-              href={{
-                pathname: `/movies/${movie.id}`,
-                query: {
-                  title: movie.original_title
-                }
-              }}
-              as={`/movies/${movie.id}`}
-            >
+            <Link href={`/movies/${movie.original_title}/${movie.id}`}>
               {movie.original_title}
             </Link>
           </h4>{" "}

@@ -12,7 +12,8 @@ export default function RoutePath() {
   const page: RoutePathPros = {
     "/": "Home",
     "/about": "About",
-    "/movies/[...params]": `${movieTitle}`
+    "/movies/[...params]": `${movieTitle}`,
+    "/404": "NotFound"
   };
 
   const selectRoute = page[router.pathname];
